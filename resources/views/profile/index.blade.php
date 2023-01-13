@@ -11,15 +11,22 @@
   <table>
     <thead>
       <tr>
+        <th>No</th>
         <th>Nama</th>
         <th>Alamat</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
       @foreach ($profiles as $profile)
         <tr>
+          <td>{{ $loop->iteration }}</td>
           <td>{{ $profile->nama }}</td>
           <td>{{ $profile->alamat }}</td>
+          <td>
+            {{-- <a href="/post/{{ $profile->id }}">Edit</a> --}}
+            <a href="{{ route('profile.show', $profile->id) }}">Detail</a>
+          </td>
         </tr>
       @endforeach
     </tbody>
