@@ -12,11 +12,16 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $title    = 'Profile';
+    protected $subtitle = 'Halaman ini untuk mengelola data profil';
     public function index()
     {
         //
         $profiles = Profile::all();
-        return view('profile.index', compact('profiles'));
+        return view('profile.index', compact('profiles'))
+        ->with('title', $this->title)
+        ->with('subtitle', $this->subtitle)
+        ->with('content', 'List Data Profile');
     }
 
     /**
@@ -26,7 +31,10 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('profile.create');
+        return view('profile.create')
+        ->with('title', $this->title)
+        ->with('subtitle', $this->subtitle)
+        ->with('content', 'Create Data Profile');
     }
     /**
      * Store a newly created resource in storage.
@@ -57,7 +65,10 @@ class ProfileController extends Controller
     {
         //  
         $profiles = Profile::find($profile->id);
-        return view('profile.show', compact('profiles'));
+        return view('profile.show', compact('profiles'))
+        ->with('title', $this->title)
+        ->with('subtitle', $this->subtitle)
+        ->with('content', 'Detail Data Profile');
     }
 
     /**
@@ -70,7 +81,10 @@ class ProfileController extends Controller
     {
         //
         $profiles = Profile::find($profile->id);
-        return view('profile.edit', compact('profiles'));
+        return view('profile.edit', compact('profiles'))
+        ->with('title', $this->title)
+        ->with('subtitle', $this->subtitle)
+        ->with('content', 'Update Data Profile');
     }
 
     /**

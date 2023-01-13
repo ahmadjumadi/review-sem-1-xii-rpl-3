@@ -22,3 +22,4 @@ Route::get('/', function () {
 
 Route::resource('post', PostController::class);
 Route::resource('profile', ProfileController::class);
+Route::view('template', 'template.master');
