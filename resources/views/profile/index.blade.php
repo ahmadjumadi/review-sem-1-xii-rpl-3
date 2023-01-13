@@ -24,10 +24,14 @@
           <td>{{ $profile->nama }}</td>
           <td>{{ $profile->alamat }}</td>
           <td>
-            {{-- <a href="/post/{{ $profile->id }}">Edit</a> --}}
-            <a href="{{ route('profile.show', $profile->id) }}">Detail</a>
-            <a href="{{ route('profile.edit', $profile->id) }}">Edit</a>
-
+            <form action="{{ route('profile.destroy', [$profile->id]) }}" method="post">
+              {{-- <a href="/post/{{ $profile->id }}">Edit</a> --}}
+              <a href="{{ route('profile.show', $profile->id) }}">Detail</a>
+              <a href="{{ route('profile.edit', $profile->id) }}">Edit</a>
+              @csrf
+              @method('DELETE')
+              <input type="submit" value="Delete">
+            </form>
           </td>
         </tr>
       @endforeach

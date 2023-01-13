@@ -105,5 +105,8 @@ class ProfileController extends Controller
     public function destroy(Profile $profile)
     {
         //
+        $profiles = Profile::find($profile->id);
+        $profiles->delete();
+        return redirect('/profile');
     }
 }
