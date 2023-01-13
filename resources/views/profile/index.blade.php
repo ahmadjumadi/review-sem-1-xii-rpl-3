@@ -26,6 +26,8 @@
           <td>
             {{-- <a href="/post/{{ $profile->id }}">Edit</a> --}}
             <a href="{{ route('profile.show', $profile->id) }}">Detail</a>
+            <a href="{{ route('profile.edit', $profile->id) }}">Edit</a>
+
           </td>
         </tr>
       @endforeach

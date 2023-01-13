@@ -55,7 +55,7 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        //
+        //  
         $profiles = Profile::find($profile->id);
         return view('profile.show', compact('profiles'));
     }
@@ -69,6 +69,8 @@ class ProfileController extends Controller
     public function edit(Profile $profile)
     {
         //
+        $profiles = Profile::find($profile->id);
+        return view('profile.edit', compact('profiles'));
     }
 
     /**
@@ -81,6 +83,17 @@ class ProfileController extends Controller
     public function update(Request $request, Profile $profile)
     {
         //
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required'
+        ]);
+
+        $profile = Profile::find($profile->id);
+        $profile->nama     = $request->nama;
+        $profile->alamat   = $request->alamat;
+        $profile->update();
+
+        return redirect('/profile');
     }
 
     /**
