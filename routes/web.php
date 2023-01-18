@@ -19,7 +19,15 @@ use App\Http\Controllers\ProfileController;
 Route::get('/', function () {
     return view('welcome');
 });
+// templating
+Route::view('template', 'template.master');
+Route::view('authentication', 'template.auth');
+
 
 Route::resource('post', PostController::class);
-Route::resource('profile', ProfileController::class);
-Route::view('template', 'template.master');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('profile', ProfileController::class)->middleware('auth');
+
